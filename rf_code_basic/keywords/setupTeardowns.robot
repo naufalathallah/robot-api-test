@@ -3,7 +3,6 @@ Resource   ../testdata/variables/imports.resource
 Library    RequestsLibrary
 Library    Collections
 
-
 *** Keywords ***
 Authorize
     IF  not ${GLOBAL_AUTH_SET}
@@ -43,5 +42,4 @@ Create New User
 Delete User
     [Arguments]  ${userId}
     ${response}  DELETE    url=${GLOBAL_ENDPOINT_USERS}/${userId}  expected_status=200  headers=${GLOBAL_AUTH_HEADER}
-    Set Global Variable    ${SUITE_USER_ID}    ${EMPTY}
     RETURN  ${response}
