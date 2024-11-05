@@ -38,9 +38,10 @@ Create New User
     IF  "${expectedStatuscode}" == "201"
         ${userId}  Get From Dictionary    ${response.json()}    ID
     END
-    [Return]  ${userId}  ${response}
+    RETURN  ${userId}  ${response}
 
 Delete User
     [Arguments]  ${userId}
     ${response}  DELETE    url=${GLOBAL_ENDPOINT_USERS}/${userId}  expected_status=200  headers=${GLOBAL_AUTH_HEADER}
-    [Return]  ${response}
+    Set Global Variable    ${SUITE_USER_ID}    ${EMPTY}
+    RETURN  ${response}
